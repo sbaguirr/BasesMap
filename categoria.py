@@ -14,9 +14,14 @@ def mapper(record):
 def reducer(key, list_of_values):
  total = 0 
  for t in list_of_values:
-  num= t.strip('+') #No que procede :v  Me sale este error 'int' object has no attribute 'strip'
-  nocom= num.replace(',','')
-  total += float(nocom)
+     #No que procede :v  Me sale este error 'int' object has no attribute 'strip'
+     #Le hice algunas pruebas y me bota algunos errores jajaja hay que seguir probando ejemplo al momento de tomar el t parece que lo entiende como un int asi que está feo no ves que es una cadena
+  nocom= t.replace(',','')
+  print(nocom)
+  num= nocom[:-1]
+  print (num)
+  
+  total += float(num)
  mr.emit((key, total))
 
 
