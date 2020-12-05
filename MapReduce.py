@@ -22,7 +22,9 @@ class MapReduce:
         jenc = json.JSONEncoder()
         file = open(nombre_archivo, 'w', encoding="utf-8")
         file.write('La categoría predominante es ')
+        # Obtener la cantidad mayor
         maxi = max(self.result, key= lambda tupla: tupla[1])
+        # Escribir en el archivo
         file.write(maxi[0]+' con '+ str(maxi[1])+" descargas")
         file.write('\n\nResumen del conteo\n')
         for item in self.result:

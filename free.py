@@ -30,10 +30,6 @@ if __name__ == '__main__':
     cliente = pymongo.MongoClient("mongodb://localhost:27017/")
     base = cliente["googlePlay"]
     coleccion = base["googlecsv"]
-    query = {"_id": 0, "Category": 1, "Installs": 1, "Type":"Free"}
-    resultado = coleccion.find({}, query)
-
-#    for x in resultado:
-#       print(x)
-
+    proyeccion = {"_id": 0, "Category": 1, "Installs": 1}
+    resultado = coleccion.find({ "Type":"Free"}, proyeccion)
     mr.execute(resultado, mapper, reducer, "appsgratis.txt")
