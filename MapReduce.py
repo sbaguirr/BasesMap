@@ -12,16 +12,19 @@ class MapReduce:
     def emit(self, value):
         self.result.append(value) 
 
-    def execute(self, data, mapper, reducer):
+    def execute(self, data, mapper, reducer, nombre_archivo):
         for line in data:
             mapper(line)
 
         for key in self.intermediate:
             reducer(key, self.intermediate[key])
 
-        #jenc = json.JSONEncoder(encoding='latin-1')
         jenc = json.JSONEncoder()
-        file = open("salida.txt", 'w', encoding="utf-8")
+        file = open(nombre_archivo, 'w', encoding="utf-8")
+        file.write('La categoría predominante es ')
+        maxi = max(self.result, key= lambda tupla: tupla[1])
+        file.write(maxi[0]+' con '+ str(maxi[1])+" descargas")
+        file.write('\n\nResumen del conteo\n')
         for item in self.result:
             file.write(jenc.encode(item)+'\n')
         file.close()
