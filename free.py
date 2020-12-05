@@ -6,9 +6,9 @@ mr = MapReduce.MapReduce()
 # Ejemplo de linea {'Category': 'MEDICAL', 'Installs': '1,000+', 'Type': 'Free'}
 
 def mapper(record):
- category= record['Category']
- installs= record['Installs']
- mr.emit_intermediate(category, installs)
+    category= record['Category']
+    installs= record['Installs']
+    mr.emit_intermediate(category, installs)
 
 
 def reducer(key, list_of_values):
@@ -30,6 +30,10 @@ if __name__ == '__main__':
     cliente = pymongo.MongoClient("mongodb://localhost:27017/")
     base = cliente["googlePlay"]
     coleccion = base["googlecsv"]
-    query = {"_id": 0, "Category": 1, "Installs": 1, "Type":1}
+    query = {"_id": 0, "Category": 1, "Installs": 1, "Type":"Free"}
     resultado = coleccion.find({}, query)
-    mr.execute(resultado, mapper, reducer, "todos.txt")
+
+#    for x in resultado:
+#       print(x)
+
+    mr.execute(resultado, mapper, reducer, "appsgratis.txt")
