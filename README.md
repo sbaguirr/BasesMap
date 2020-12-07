@@ -6,10 +6,10 @@ Proyecto de Base de Datos Avanzados
 
 # Código de implementación de la base de datos
 
-## Crear base de datos en mongoDB
+### Crear base de datos en mongoDB
 use googlePlay
 
-## Cargar datos a mongoDB
+### Cargar datos a mongoDB
 mongoimport -d googlePlay -c googlecsv --type csv --headerline --file RUTAHACIAELARCHIVO
 
 ## Código para las operaciones CRUD en MongoDB
