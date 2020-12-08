@@ -1,8 +1,16 @@
-Código de implementación de la base de datos
-use googlePlay
+En una ventana de comandos CMD, levantar el servidor de MongoDB
+>mongod
 
-Cargar datos
-mongoimport -d googlePlay -c googlecsv --type csv --headerline --file RUTAHACIAELARCHIVO
+En otra ventana de comandos CMD, utilizar el Mongo Shell
+>mongo
+
+Código de implementación de la base de datos, dentro del Mongo Shell
+>use googlePlay
+
+En otra ventana de comandos CMD, cargar datos del archivo .csv
+>mongoimport -d googlePlay -c googlecsv --type csv --headerline --file RUTAHACIAELARCHIVO
+
+Dentro del Mongo Shell utilizar los siguientes comandos:
 
 -Código para insertar datos
 
